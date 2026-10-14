@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Matheus Mendonça — Brand manager e designer</title>
+<meta name="description" content="Portfólio de Matheus Mendonça: brand manager e designer entre o Rio de Janeiro, Lisboa, São Paulo e Porto. Identidade visual, social media, e-mail marketing e e-commerce.">
+<meta name="theme-color" content="#E0348F">
+<meta property="og:title" content="Matheus Mendonça — Brand manager e designer">
+<meta property="og:description" content="Identidade visual, social media, e-mail marketing e e-commerce.">
+<meta property="og:type" content="website">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-tone="light">
+<a class="skip" href="#work" data-i18n="skip">Ir para os trabalhos</a>
+
+<div class="cursor" aria-hidden="true"><span class="cursor-label"></span></div>
+
+<header class="site-header" id="top">
+  <a class="logo" href="#home" aria-label="Matheus Mendonça — início">mm</a>
+  <nav class="nav" id="nav" aria-label="Principal">
+    <a href="#work" data-i18n="nav.work">Trabalhos</a>
+    <a href="#about" data-i18n="nav.about">Sobre</a>
+    <a href="#experience" data-i18n="nav.experience">Experiência</a>
+    <a href="#contact" data-i18n="nav.contact">Contato</a>
+  </nav>
+  <div class="header-tools">
+    <button class="lang" id="langBtn" type="button" aria-label="Mudar idioma / Change language">EN</button>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home" data-tone="light">
+    <div class="hero-inner">
+      <h1 class="name" id="name" aria-label="Matheus Mendonça">
+        <span class="line">Matheus</span>
+        <span class="line">Mendonça</span>
+      </h1>
+      <div class="hero-bottom">
+        <p class="hero-role" data-i18n="hero.role">Brand manager e designer. Do conceito à loja online.</p>
+        <div class="hero-side">
+          <p class="hero-intro" data-i18n="hero.intro">Crio identidades, campanhas, e-mails e páginas que funcionam juntos. Baseado no Porto.</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid magnetic" href="#work"><span data-i18n="hero.cta">Ver trabalhos</span></a>
+            <a class="btn btn-line magnetic" href="#contact"><span data-i18n="hero.cta2">Falar comigo</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="status"><span class="status-dot"></span><span data-i18n="hero.status">Aberto a novos projetos</span></p>
+  </section>
+
+  <!-- MARQUEES -->
+  <section class="marquees" aria-label="Ferramentas e clientes" data-tone="light">
+    <div class="marquee" data-dir="-1" data-speed="0.55">
+      <div class="track" data-items="Photoshop,Illustrator,InDesign,After Effects,Premiere,Audition,Figma,Adobe XD,Klaviyo,Shopify,HTML / CSS,Google Analytics,Canva,ChatGPT,Claude,Lovable,Nano Banana"></div>
+    </div>
+    <div class="marquee alt" data-dir="1" data-speed="0.4">
+      <div class="track" data-items="Curioz,Oriente 2000,Clínica Sesma,Redes 2000,Robgraph,Atamed,Just Traduções,Editora Valentina,Colégio Edu'C Mais,Colégio Guilherme Dumont Villares,Vimeiro,Discovery,Luggage,Focca,Vila Monte,Pioneer,Drama,Estoril,Sara Carreira,Marea Club,Fórmula de Licitação,Best Sun Energy,Nosso Camarote,Go Punta,Top Shopping,Maia Bebidas Finas"></div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section class="work" id="work" data-tone="dark">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="work.title">Trabalhos</h2>
+        <p class="lede" data-i18n="work.sub">Uma seleção do que já fiz. Cada linha abre o projeto completo no meu portfólio anterior.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrar trabalhos" id="filters">
+        <button type="button" class="chip is-on" data-filter="all" data-i18n="f.all">Tudo</button>
+        <button type="button" class="chip" data-filter="social" data-i18n="f.social">Social media</button>
+        <button type="button" class="chip" data-filter="email" data-i18n="f.email">E-mail</button>
+        <button type="button" class="chip" data-filter="brand" data-i18n="f.brand">Marca e print</button>
+        <button type="button" class="chip" data-filter="photo" data-i18n="f.photo">Foto e imagem</button>
+        <button type="button" class="chip" data-filter="ui" data-i18n="f.ui">UI/UX e web</button>
+      </div>
+      <ul class="p-grid" id="projectList"></ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about" data-tone="light">
+    <div class="wrap about-grid">
+      <figure class="portrait">
+        <div class="portrait-ring"></div>
+        <img src="assets/matheus.jpg" alt="Retrato de Matheus Mendonça" width="640" height="640" loading="lazy">
+      </figure>
+      <div class="about-text">
+        <h2 data-i18n="about.title">Sobre</h2>
+        <p class="about-lead" data-i18n="about.p1">Sou publicitário formado pela ESPM e trabalho com design e marca desde 2016, entre o Rio de Janeiro, Lisboa, São Paulo e Porto.</p>
+        <p data-i18n="about.p2">Hoje cuido da marca da Curioz de ponta a ponta: materiais online e offline, e-mail marketing no Klaviyo e a loja em Shopify. Prefiro ver o desenho e a execução no mesmo lugar, por isso estudei front-end e construo as páginas que desenho.</p>
+        <p data-i18n="about.p3">Estou sempre testando ferramentas novas, incluindo IA como ChatGPT, Lovable e Nano Banana, para entregar mais rápido sem perder o cuidado.</p>
+        <dl class="stats">
+          <div><dt><span class="count" data-to="10">0</span>+</dt><dd data-i18n="stat.years">anos de experiência</dd></div>
+          <div><dt><span class="count" data-to="4">0</span></dt><dd data-i18n="stat.cities">cidades, 2 países</dd></div>
+          <div><dt><span class="count" data-to="25">0</span>+</dt><dd data-i18n="stat.brands">marcas e clientes</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="wrap skills">
+      <h3 data-i18n="skills.title">Ferramentas</h3>
+      <div class="skill-groups" id="skills"></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="exp" id="experience" data-tone="light">
+    <div class="wrap exp-grid">
+      <div class="exp-head">
+        <h2 data-i18n="exp.title">Experiência</h2>
+        <p class="lede" data-i18n="exp.sub">Clique em cada empresa para ver o que eu fazia lá.</p>
+      </div>
+      <ol class="timeline" id="expList"><span class="tl-rail" aria-hidden="true"><span class="tl-fill"></span></span></ol>
+    </div>
+    <div class="wrap edu-grid">
+      <div>
+        <h3 data-i18n="edu.title">Educação</h3>
+        <ul class="edu" id="eduList"></ul>
+      </div>
+      <div>
+        <h3 data-i18n="lang.title">Idiomas</h3>
+        <ul class="langs" id="langList"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" data-tone="pink">
+    <div class="wrap">
+      <h2 class="contact-title" data-i18n="contact.title">Vamos criar algo juntos?</h2>
+      <a class="mail magnetic" id="mailLink" href="mailto:matmendoncalopes@gmail.com">matmendoncalopes@gmail.com</a>
+      <div class="contact-actions">
+        <button type="button" class="btn btn-ink magnetic" id="copyBtn"><span data-i18n="contact.copy">Copiar e-mail</span></button>
+        <a class="btn btn-ink-line magnetic" href="https://www.linkedin.com/in/matmendoncalopes/" target="_blank" rel="noopener"><span>LinkedIn</span></a>
+        <a class="btn btn-ink-line magnetic" href="https://www.instagram.com/_mathoro/" target="_blank" rel="noopener"><span>Instagram</span></a>
+      </div>
+      <footer class="foot">
+        <p>© <span id="year">2026</span> Matheus Mendonça</p>
+        <a href="#home" data-i18n="foot.top">Voltar ao topo</a>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<div class="proj" id="proj" role="dialog" aria-modal="true" aria-labelledby="projTitle" aria-hidden="true">
+  <button class="proj-close" id="projClose" type="button" data-i18n="proj.close">Fechar</button>
+  <article class="proj-inner" id="projBody"></article>
+</div>
+
+<p class="sr-only" id="live" aria-live="polite"></p>
+<script src="js/layouts.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
