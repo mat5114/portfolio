@@ -30,7 +30,7 @@
     <a href="#contact" data-i18n="nav.contact">Contato</a>
   </nav>
   <div class="header-tools">
-    <button class="lang" id="langBtn" type="button" aria-label="Mudar idioma / Change language">EN</button>
+    <button class="lang" id="langBtn" type="button" aria-label="Mudar idioma / Change language"><span data-l="pt">PT</span><span data-l="en">EN</span></button>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav" data-i18n-aria="menu">
       <span></span><span></span>
     </button>
@@ -153,6 +153,7 @@
 </main>
 
 <div class="proj" id="proj" role="dialog" aria-modal="true" aria-labelledby="projTitle" aria-hidden="true">
+  <div class="proj-bar" aria-hidden="true"></div>
   <button class="proj-close" id="projClose" type="button" data-i18n="proj.close">Fechar</button>
   <article class="proj-inner" id="projBody"></article>
 </div>

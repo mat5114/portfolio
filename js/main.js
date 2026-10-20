@@ -22,7 +22,8 @@
     $$('[data-i18n]').forEach(el => { el.textContent = t(el.dataset.i18n); });
     $$('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', t(el.dataset.i18nAria)));
     $('.skip').textContent = t('skip');
-    $('#langBtn').textContent = lang === 'pt' ? 'EN' : 'PT';
+    $$('#langBtn [data-l]').forEach(s => s.classList.toggle('on', s.dataset.l === lang));
+    $('#langBtn').setAttribute('aria-label', lang === 'pt' ? 'Mudar idioma: mudar para inglês' : 'Change language: switch to Portuguese');
     document.title = lang === 'pt'
       ? 'Matheus Mendonça — Brand manager e designer'
       : 'Matheus Mendonça — Brand manager and designer';
@@ -31,11 +32,12 @@
   }
 
   /* ---------- projetos ---------- */
+  const pad2 = n => String(n).padStart(2, '0');
   function renderProjects() {
     const ul = $('#projectList');
     ul.innerHTML = PROJECTS.map((p, i) => {
       const cov = p.cover || (p.images && p.images[0]);
-      return `<li class="p-item" data-cat="${p.cat}"${filter !== 'all' && p.cat !== filter ? ' hidden' : ''}>
+      return `<li class="p-item" style="--cd:${i % 3}" data-cat="${p.cat}"${filter !== 'all' && p.cat !== filter ? ' hidden' : ''}>
         <button class="card" type="button" data-i="${i}" data-cursor="${t('view')}">
           <span class="card-cover" data-cat="${p.cat}"><span class="card-tile">${p.title}</span>${cov ? `<img src="${cov}" alt="" loading="lazy" decoding="async">` : ''}</span>
           <span class="card-info"><span class="card-title">${p.title}</span></span>
@@ -43,7 +45,12 @@
     }).join('');
     $$('.card-cover img', ul).forEach(img => img.addEventListener('error', () => img.remove()));
     bindCursorTargets();
+    watchCards();
   }
+  const cardIO = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); cardIO.unobserve(e.target); }
+  }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }) : null;
+  function watchCards() { $$('.p-item').forEach(li => (cardIO ? cardIO.observe(li) : li.classList.add('in'))); }
 
   $('#projectList').addEventListener('click', e => {
     const b = e.target.closest('.card'); if (!b) return;
@@ -57,7 +64,7 @@
     $$('.chip').forEach(c => c.classList.toggle('is-on', c === b));
     $$('.p-item').forEach(li => {
       const show = filter === 'all' || li.dataset.cat === filter;
-      if (show) { li.hidden = false; requestAnimationFrame(() => li.classList.remove('hide')); }
+      if (show) { li.hidden = false; li.classList.add('in'); requestAnimationFrame(() => li.classList.remove('hide')); }
       else { li.classList.add('hide'); setTimeout(() => { if (li.classList.contains('hide')) li.hidden = true; }, 350); }
     });
   });
@@ -66,6 +73,7 @@
   const cursor = $('.cursor'), cLabel = $('.cursor-label');
   const m = { x: innerWidth / 2, y: innerHeight / 2 };
   const c = { x: m.x, y: m.y };
+  let cs = 1, csv = 1;
 
   function bindCursorTargets() {
     if (!fine) return;
@@ -79,8 +87,8 @@
     addEventListener('pointermove', e => { m.x = e.clientX; m.y = e.clientY; }, { passive: true });
     $$('a,button').forEach(el => {
       if (el.dataset.cursor) return;
-      el.addEventListener('mouseenter', () => { if (!cursor.classList.contains('is-big')) { cursor.style.scale = '1.8'; } });
-      el.addEventListener('mouseleave', () => { cursor.style.scale = ''; });
+      el.addEventListener('mouseenter', () => { if (!cursor.classList.contains('is-big')) { cs = 1.8; } });
+      el.addEventListener('mouseleave', () => { cs = 1; });
     });
   }
 
@@ -118,25 +126,65 @@
     const L = layoutOf(PROJECTS[i]);
     g.dataset.grid = L.grid; g.dataset.gap = L.gap;
     g.innerHTML = galleryInner(PROJECTS[i]);
-    wireImages(g);
+    wireImages(g); watchReveals(g);
     document.dispatchEvent(new CustomEvent('project:render', { detail: i }));
   }
 
+  /* revelações ao rolar dentro da página de projeto */
+  let revealIO = null;
+  function watchReveals(root) {
+    if (!('IntersectionObserver' in window)) { $$('.rv,figure,.pi-facts', root).forEach(el => el.classList.add('in')); return; }
+    if (!revealIO) revealIO = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
+    }), { root: proj, threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    const cols = (() => { const g = $('#projGallery'); const n = g && g.dataset.grid; return n === 'masonry' ? 3 : Math.max(1, +n || 1); })();
+    $$('.proj-gallery figure', root).forEach((f, k) => { f.style.setProperty('--cd', k % cols); revealIO.observe(f); });
+    $$('.rv, .pi-facts', root).forEach(el => revealIO.observe(el));
+  }
+  const words = txt => String(txt).split(' ').map((w, k) => `<span class="rw" style="--k:${k}">${w}</span>`).join(' ');
+  const titleHTML = txt => String(txt).split(' ').map((w, wi, arr) => {
+    const off = arr.slice(0, wi).join(' ').length + (wi ? 1 : 0);
+    return `<span class="w">${[...w].map((ch, k) => `<span class="c"><span style="--k:${off + k}">${ch}</span></span>`).join('')}</span>`;
+  }).join(' ');
+
   function projHTML(i) {
     const p = PROJECTS[i], next = PROJECTS[(i + 1) % PROJECTS.length], L = layoutOf(p);
-    const meta = [t('f.' + p.cat), p.meta && p.meta[lang]].filter(Boolean).join('  ·  ');
-    const text = p.text && p.text[lang];
-    return `<header class="proj-head"><p class="proj-cat">${meta}</p><h2 id="projTitle">${p.title}</h2>${text ? `<p class="proj-text">${text}</p>` : ''}</header>
+    const cat = t('f.' + p.cat), meta = p.meta && p.meta[lang];
+    const lead = p.lead && p.lead[lang], text = p.text && p.text[lang];
+    const items = (p.deliver && p.deliver[lang]) || [];
+    const facts = [
+      `<div style="--d:0"><dt>${t('proj.type')}</dt><dd>${[cat, meta].filter(Boolean).join(' · ')}</dd></div>`,
+      items.length ? `<div style="--d:1"><dt>${t('proj.deliver')}</dt><dd><ul>${items.map((x, k) => `<li style="--k:${k}">${x}</li>`).join('')}</ul></dd></div>` : ''
+    ].join('');
+    const strip = `<span>${p.title}</span><span>${cat}</span>`.repeat(5);
+    return `<header class="ph">
+        <div class="ph-glow" aria-hidden="true"></div>
+        <div class="ph-in">
+          <div class="ph-top fade" style="--d:0"><span class="ph-idx">${pad2(i + 1)}<small> / ${pad2(PROJECTS.length)}</small></span><span class="ph-chip">${cat}</span>${meta ? `<span class="ph-chip">${meta}</span>` : ''}</div>
+          <h2 class="ph-title" id="projTitle" aria-label="${p.title}"><span aria-hidden="true">${titleHTML(p.title)}</span></h2>
+          ${lead ? `<p class="ph-lead fade" style="--d:2">${lead}</p>` : ''}
+        </div>
+        ${p.cover ? `<div class="ph-cover"><img src="${p.cover}" alt=""></div>` : ''}
+        <p class="ph-hint fade" style="--d:4"><span>${t('proj.scroll')}</span><i></i></p>
+      </header>
+      <div class="ph-strip" aria-hidden="true"><div>${strip}${strip}</div></div>
+      <section class="pi">
+        ${text ? `<p class="pi-text rv">${words(text)}</p>` : '<span></span>'}
+        <dl class="pi-facts">${facts}</dl>
+      </section>
       <div class="proj-gallery" id="projGallery" data-grid="${L.grid}" data-gap="${L.gap}">${galleryInner(p)}</div>
       <button class="proj-next" type="button" data-next="${(i + 1) % PROJECTS.length}"><span class="proj-next-label">${t('proj.next')}</span><span class="proj-next-title">${next.title}</span></button>`;
   }
 
   function openProject(i, x, y) {
     cur = i;
+    const pr = PROJECTS[i];
+    proj.style.setProperty('--pbg', pr.bg || '#14110F'); proj.style.setProperty('--phi', pr.hi || '#F2C230');
     pBody.innerHTML = projHTML(i);
-    wireImages(pBody);
-    proj.style.setProperty('--ox', (x == null ? innerWidth / 2 : x) + 'px');
-    proj.style.setProperty('--oy', (y == null ? innerHeight / 2 : y) + 'px');
+    wireImages(pBody); watchReveals(pBody);
+    proj.style.setProperty('--pp', 0); proj.style.setProperty('--py', 0);
+    proj.style.setProperty('--ox', clamp(x == null ? innerWidth / 2 : x, 0, innerWidth) + 'px');
+    proj.style.setProperty('--oy', clamp(y == null ? innerHeight / 2 : y, 0, innerHeight) + 'px');
     proj.scrollTop = 0;
     if (!proj.classList.contains('open')) lastFocus = document.activeElement;
     proj.classList.add('open'); proj.setAttribute('aria-hidden', 'false');
@@ -158,6 +206,16 @@
     document.dispatchEvent(new CustomEvent('project:close'));
     cur = -1;
   }
+  let pTick = false;
+  proj.addEventListener('scroll', () => {
+    if (pTick) return; pTick = true;
+    requestAnimationFrame(() => {
+      pTick = false;
+      const max = proj.scrollHeight - proj.clientHeight;
+      proj.style.setProperty('--pp', max > 0 ? (proj.scrollTop / max).toFixed(4) : 0);
+      proj.style.setProperty('--py', reduce ? 0 : (proj.scrollTop * 0.18).toFixed(1));
+    });
+  }, { passive: true });
   pClose.addEventListener('click', closeProject);
   pBody.addEventListener('click', e => {
     const n = e.target.closest('[data-next]'); if (!n) return;
@@ -215,7 +273,8 @@
 
     if (fine && cursor) {
       c.x = lerp(c.x, m.x, 0.22); c.y = lerp(c.y, m.y, 0.22);
-      cursor.style.transform = `translate(${c.x}px,${c.y}px)`;
+      csv = lerp(csv, cs, 0.2);
+      cursor.style.transform = `translate(${c.x}px,${c.y}px) scale(${csv})`;
     }
 
     if (!reduce) {
