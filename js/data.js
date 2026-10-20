@@ -15,7 +15,7 @@ const I18N = {
     'proj.close': 'Fechar', 'proj.client': 'Cliente', 'proj.deliver': 'O que entreguei', 'proj.type': 'Tipo', 'proj.pieces': 'Imagens', 'proj.scroll': 'Role para ver', 'proj.next': 'Próximo projeto', 'proj.empty': 'As imagens deste projeto entram em breve.',
     'about.title': 'Sobre',
     'about.p1': 'Sou publicitário formado pela ESPM e trabalho com design e marca desde 2016, entre o Rio de Janeiro, Lisboa, São Paulo e Porto.',
-    'about.p2': 'Hoje cuido da marca da Curioz de ponta a ponta: materiais online e offline, e-mail marketing no Klaviyo e a loja em Shopify. Prefiro ver o desenho e a execução no mesmo lugar, por isso estudei front-end e construo as páginas que desenho.',
+    'about.p2': 'Hoje cuido da marca da Curiouz de ponta a ponta: materiais online e offline, e-mail marketing no Klaviyo e a loja em Shopify. Prefiro ver o desenho e a execução no mesmo lugar, por isso estudei front-end e construo as páginas que desenho.',
     'about.p3': 'Estou sempre testando ferramentas novas, incluindo IA como ChatGPT, Lovable e Nano Banana, para entregar mais rápido sem perder o cuidado.',
     'stat.years': 'anos de experiência', 'stat.cities': 'cidades, 2 países', 'stat.brands': 'marcas e clientes',
     'skills.title': 'Ferramentas',
@@ -39,7 +39,7 @@ const I18N = {
     'proj.close': 'Close', 'proj.client': 'Client', 'proj.deliver': 'What I delivered', 'proj.type': 'Type', 'proj.pieces': 'Images', 'proj.scroll': 'Scroll to see', 'proj.next': 'Next project', 'proj.empty': 'Images for this project are coming soon.',
     'about.title': 'About',
     'about.p1': 'I studied advertising at ESPM and have worked in design and branding since 2016, across Rio de Janeiro, Lisbon, São Paulo and Porto.',
-    'about.p2': 'Today I run the Curioz brand end to end: online and offline materials, email marketing in Klaviyo and the Shopify store. I like keeping design and execution in one place, so I studied front-end and build the pages I design.',
+    'about.p2': 'Today I run the Curiouz brand end to end: online and offline materials, email marketing in Klaviyo and the Shopify store. I like keeping design and execution in one place, so I studied front-end and build the pages I design.',
     'about.p3': 'I keep testing new tools, including AI like ChatGPT, Lovable and Nano Banana, to deliver faster without losing care.',
     'stat.years': 'years of experience', 'stat.cities': 'cities, 2 countries', 'stat.brands': 'brands and clients',
     'skills.title': 'Tools',
@@ -137,7 +137,7 @@ const SKILLS = [
 ];
 
 const EXPERIENCE = [
-  { co: 'Curioz', place: 'Porto', period: '2024 – 2026',
+  { co: 'Curiouz', place: 'Porto', period: '2024 – 2026',
     role: { pt: 'Brand Manager', en: 'Brand Manager' },
     items: {
       pt: ['Gestão de todos os materiais online e offline da marca.', 'Klaviyo: newsletters, listas, flows de e-mail e popups.', 'Shopify: landing pages, sections, automações, coleções e ajustes.'],
