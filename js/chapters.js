@@ -9,8 +9,8 @@ window.SITE_CHAPTERS = [
    "en": "Café and cultural space · Porto"
   },
   "brief": {
-   "pt": "Café de dia, programação cultural ao fim da tarde. A marca nasce do logótipo desenhado em pixels: o mesmo grid 4×5 vira título, ícone de mapa, tipografia e animação de entrada, e o sublinhado verde de marcador faz eco dos cartazes impressos.",
-   "en": "A café by day, a cultural programme in the evening. The brand grows out of a logo drawn in pixels: the same 4×5 grid becomes headline type, map pin and intro animation, and the green marker underline echoes the printed posters."
+   "pt": "Café de dia e espaço cultural ao fim da tarde, com agenda de eventos.",
+   "en": "A café by day and a cultural space in the evening, with an events calendar."
   },
   "palette": [
    "#0B0B0A",
@@ -147,8 +147,8 @@ window.SITE_CHAPTERS = [
    "en": "Ramen bar · Aliados, Porto"
   },
   "brief": {
-   "pt": "Um ramen bar pequeno, de luz baixa e R&B. O site fala como a casa: títulos gigantes em vermelho néon sobre preto, o caldo primeiro e o resto depois, e uma contagem regressiva para a próxima noite com DJ atrás do balcão.",
-   "en": "A small, low-light ramen bar with R&B on the speakers. The site speaks like the room: giant neon-red headlines on black, broth first and the rest after, and a countdown to the next DJ night behind the counter."
+   "pt": "Ramen bar pequeno no Aliados, com R&B e noites com DJ.",
+   "en": "A small ramen bar in Aliados, with R&B and DJ nights."
   },
   "palette": [
    "#0C0909",
@@ -258,8 +258,8 @@ window.SITE_CHAPTERS = [
    "en": "Artisan bakery · Baixa do Porto"
   },
   "brief": {
-   "pt": "Uma padaria num sobrado antigo da Rua do Bonjardim. A identidade é feita de ilustração à mão, uma moldura em forma de flor (a cantaria da casa) e um bordô quente que vira pano de fundo das noites de evento.",
-   "en": "A bakery in an old townhouse on Rua do Bonjardim. The identity is built from hand illustration, a flower-shaped frame (borrowed from the building’s stonework) and a warm burgundy that becomes the backdrop for event nights."
+   "pt": "Padaria artesanal num sobrado antigo da Rua do Bonjardim, com noites de evento.",
+   "en": "An artisan bakery in an old townhouse on Rua do Bonjardim, with event nights."
   },
   "palette": [
    "#802522",
@@ -396,8 +396,8 @@ window.SITE_CHAPTERS = [
    "en": "Coffee shops · Porto and São Paulo"
   },
   "brief": {
-   "pt": "Specialty coffee for all. Um verde floresta, um letreiro néon e muito cartão com foto: a marca fala do café de rua e deixa o produto (V60, matcha, latte) fazer o trabalho. O site liga lojas, merch, café em grão e clube.",
-   "en": "Specialty coffee for all. A forest green, a neon sign and plenty of photo cards: the brand talks about street coffee and lets the product (V60, matcha, latte) do the work. The site connects stores, merch, coffee bags and a club."
+   "pt": "Rede de specialty coffee no Porto e em São Paulo. O site liga lojas, merch, café em grão e clube.",
+   "en": "A specialty coffee chain in Porto and São Paulo. The site connects stores, merch, coffee bags and a club."
   },
   "palette": [
    "#1A6B3C",
@@ -507,8 +507,8 @@ window.SITE_CHAPTERS = [
    "en": "Café and brunch · Porto"
   },
   "brief": {
-   "pt": "Fundo branco e uma só cor alta: o laranja. Anton em caixa alta e Instrument Serif em itálico, com um símbolo de figuras que balança devagar. O menu foi pensado para o telemóvel: seleção pessoal para mostrar ao balcão.",
-   "en": "A white ground and a single loud colour: orange. Anton in caps and Instrument Serif in italics, with a figures symbol that sways slowly. The menu is built for phones: a personal selection to show at the counter."
+   "pt": "Café e brunch no Porto. Menu pensado para o telemóvel, com seleção pessoal para mostrar ao balcão.",
+   "en": "A café and brunch spot in Porto. A phone-first menu with a personal selection to show at the counter."
   },
   "palette": [
    "#EE4410",
