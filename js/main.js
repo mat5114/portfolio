@@ -164,7 +164,6 @@
           <h2 class="ph-title" id="projTitle" aria-label="${p.title}"><span aria-hidden="true">${titleHTML(p.title)}</span></h2>
           ${lead ? `<p class="ph-lead fade" style="--d:2">${lead}</p>` : ''}
         </div>
-        ${p.cover ? `<div class="ph-cover"><img src="${p.cover}" alt=""></div>` : ''}
         <p class="ph-hint fade" style="--d:4"><span>${t('proj.scroll')}</span><i></i></p>
       </header>
       <div class="ph-strip" aria-hidden="true"><div>${strip}${strip}</div></div>
