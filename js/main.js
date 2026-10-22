@@ -133,19 +133,59 @@
   /* revelações ao rolar dentro da página de projeto */
   let revealIO = null;
   function watchReveals(root) {
-    if (!('IntersectionObserver' in window)) { $$('.rv,figure,.pi-facts', root).forEach(el => el.classList.add('in')); return; }
+    if (!('IntersectionObserver' in window)) { $$('.rv,figure,.pi-facts,.rv-l', root).forEach(el => el.classList.add('in')); return; }
     if (!revealIO) revealIO = new IntersectionObserver(es => es.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
     }), { root: proj, threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
     const cols = (() => { const g = $('#projGallery'); const n = g && g.dataset.grid; return n === 'masonry' ? 3 : Math.max(1, +n || 1); })();
     $$('.proj-gallery figure', root).forEach((f, k) => { f.style.setProperty('--cd', k % cols); revealIO.observe(f); });
-    $$('.rv, .pi-facts', root).forEach(el => revealIO.observe(el));
+    $$('.rv, .pi-facts, .rv-l, .ch .fr', root).forEach(el => revealIO.observe(el));
   }
   const words = txt => String(txt).split(' ').map((w, k) => `<span class="rw" style="--k:${k}">${w}</span>`).join(' ');
   const titleHTML = txt => String(txt).split(' ').map((w, wi, arr) => {
     const off = arr.slice(0, wi).join(' ').length + (wi ? 1 : 0);
     return `<span class="w">${[...w].map((ch, k) => `<span class="c"><span style="--k:${off + k}">${ch}</span></span>`).join('')}</span>`;
   }).join(' ');
+
+
+  /* capítulos (apresentação de sites): contexto da marca, telas e animações */
+  const pick = v => (v && typeof v === 'object' && !Array.isArray(v) && 'pt' in v) ? v[lang] : v;
+  function chaptersHTML(p) {
+    let fig = 0;
+    const frame = (it, name) => {
+      const cd = fig++ % 3;
+      const cap = pick(it.cap) || '';
+      if (it.video) {
+        return `<figure class="fr vid s${it.s || 12}${it.phone ? ' ph' : ''}" style="--cd:${cd}"><div class="fr-bar"><i></i><i></i><i></i><span>${pick(it.url) || name}</span></div><video muted loop playsinline preload="none" poster="${it.poster}" data-src="${it.video}" aria-label="${cap}"></video><figcaption>${cap}</figcaption></figure>`;
+      }
+      return `<figure class="fr s${it.s || 12}${it.phone ? ' ph' : ''}" style="--cd:${cd}"><div class="fr-bar"><i></i><i></i><i></i><span>${pick(it.url) || name}</span></div><img src="${it.src}" alt="${name}: ${cap}" loading="lazy" decoding="async"><figcaption>${cap}</figcaption></figure>`;
+    };
+    return `<div class="chapters">${p.chapters.map((c, n) => {
+      const groups = (c.groups || []).map(g => `<div class="ch-grp"><h4 class="ch-label rv-l">${t('ch.' + g.k)}</h4><div class="ch-row">${g.items.map(it => frame(it, c.name)).join('')}</div></div>`).join('');
+      return `<section class="ch" style="--ca:${c.accent};--cb:${c.bg}">
+        <header class="ch-head rv-l"><span class="ch-n">${pad2(n + 1)}</span><div><h3 class="ch-name">${c.name}</h3><p class="ch-kind">${pick(c.kind)}</p></div></header>
+        <div class="ch-ctx">
+          <p class="ch-brief rv-l">${pick(c.brief)}</p>
+          <div class="ch-sys rv-l">
+            <div class="ch-sw" role="list" aria-label="${t('ch.palette')}">${c.palette.map(h => `<span role="listitem" style="--c:${h}"><i></i><b>${h}</b></span>`).join('')}</div>
+            <p class="ch-type"><em>${t('ch.type')}</em> ${c.type}</p>
+            <ul class="ch-feat">${pick(c.features).map(f => `<li>${f}</li>`).join('')}</ul>
+          </div>
+        </div>
+        ${groups}
+      </section>`;
+    }).join('')}</div>`;
+  }
+  function watchVideos(root) {
+    const vids = $$('video[data-src]', root); if (!vids.length) return;
+    if (reduce || !('IntersectionObserver' in window)) { vids.forEach(v => { v.src = v.dataset.src; v.controls = true; }); return; }
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      const v = e.target;
+      if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}); }
+      else v.pause();
+    }), { root: proj, threshold: 0.35 });
+    vids.forEach(v => io.observe(v));
+  }
 
   function projHTML(i) {
     const p = PROJECTS[i], next = PROJECTS[(i + 1) % PROJECTS.length], L = layoutOf(p);
@@ -171,7 +211,7 @@
         ${text ? `<p class="pi-text rv">${words(text)}</p>` : '<span></span>'}
         <dl class="pi-facts">${facts}</dl>
       </section>
-      <div class="proj-gallery" id="projGallery" data-grid="${L.grid}" data-gap="${L.gap}">${galleryInner(p)}</div>
+      ${p.chapters ? chaptersHTML(p) : `<div class="proj-gallery" id="projGallery" data-grid="${L.grid}" data-gap="${L.gap}">${galleryInner(p)}</div>`}
       <button class="proj-next" type="button" data-next="${(i + 1) % PROJECTS.length}"><span class="proj-next-label">${t('proj.next')}</span><span class="proj-next-title">${next.title}</span></button>`;
   }
 
@@ -180,7 +220,7 @@
     const pr = PROJECTS[i];
     proj.style.setProperty('--pbg', pr.bg || '#14110F'); proj.style.setProperty('--phi', pr.hi || '#F2C230');
     pBody.innerHTML = projHTML(i);
-    wireImages(pBody); watchReveals(pBody);
+    wireImages(pBody); watchReveals(pBody); watchVideos(pBody);
     proj.style.setProperty('--pp', 0); proj.style.setProperty('--py', 0);
     proj.style.setProperty('--ox', clamp(x == null ? innerWidth / 2 : x, 0, innerWidth) + 'px');
     proj.style.setProperty('--oy', clamp(y == null ? innerHeight / 2 : y, 0, innerHeight) + 'px');

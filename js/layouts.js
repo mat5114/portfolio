@@ -702,41 +702,5 @@ window.LAYOUTS = {
     "src": "assets/projects/social-media-1/f066.webp"
    }
   ]
- },
- "uiux": {
-  "grid": "masonry",
-  "gap": "m",
-  "items": [
-   {
-    "src": "assets/projects/uiux/f001.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f002.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f003.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f004.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f005.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f006.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f007.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f008.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f009.webp"
-   },
-   {
-    "src": "assets/projects/uiux/f010.webp"
-   }
-  ]
  }
 };

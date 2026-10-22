@@ -24,7 +24,8 @@ const I18N = {
     'edu.title': 'Educação', 'lang.title': 'Idiomas',
     'langs': ['Português', 'Inglês', 'Alemão'],
     'contact.title': 'Vamos criar algo juntos?', 'contact.copy': 'Copiar e-mail', 'contact.copied': 'E-mail copiado',
-    'foot.top': 'Voltar ao topo'
+    'foot.top': 'Voltar ao topo',
+    'ch.home': 'Home', 'ch.menu': 'Páginas de menu', 'ch.events': 'Eventos e agenda', 'ch.more': 'Mais páginas', 'ch.motion': 'Animações', 'ch.app': 'Protótipo mobile', 'ch.palette': 'Paleta', 'ch.type': 'Tipografia'
   },
   en: {
     skip: 'Skip to work', menu: 'Open menu',
@@ -48,7 +49,8 @@ const I18N = {
     'edu.title': 'Education', 'lang.title': 'Languages',
     'langs': ['Portuguese', 'English', 'German'],
     'contact.title': "Let's make something together?", 'contact.copy': 'Copy email', 'contact.copied': 'Email copied',
-    'foot.top': 'Back to top'
+    'foot.top': 'Back to top',
+    'ch.home': 'Home', 'ch.menu': 'Menu pages', 'ch.events': 'Events and calendar', 'ch.more': 'More pages', 'ch.motion': 'Motion', 'ch.app': 'Mobile prototype', 'ch.palette': 'Palette', 'ch.type': 'Typography'
   }
 };
 
@@ -86,12 +88,11 @@ const PROJECTS = [
     text: { pt: 'Fotografia de ambiente e de detalhe em showroom de design: poltronas, jogo de xadrez em mármore e latão, prateleiras, luz natural entrando pela vitrine. Imagens que mostram a peça no espaço onde ela vive.', en: 'Ambient and detail photography in a design showroom: armchairs, a marble and brass chess set, shelves, natural light through the shop window. Images that show each piece in the space where it lives.' },
     client: { pt: 'Showroom de design', en: 'Design showroom' },
     deliver: { pt: ['Fotografia de produto e ambiente', 'Seleção e edição', 'Imagens para site e redes'], en: ['Product and ambient photography', 'Selection and editing', 'Images for web and social'] } },
-  { slug: 'uiux', title: 'UI/UX', cat: 'ui', cover: cover('uiux'), images: gallery('uiux', 3),
-    bg: '#231A1C', hi: '#D9B99B',
-    lead: { pt: 'Do catálogo ao painel do vendedor.', en: 'From the catalog to the seller dashboard.' },
-    text: { pt: 'Design de interface para a plataforma da Curiouz: home, catálogo, páginas de produto, páginas de marca, formulário e um painel de desempenho com receita e categorias. Muito espaço em branco e fotografia grande para o produto ser o protagonista.', en: 'Interface design for the Curiouz platform: home, catalog, product pages, brand pages, forms and a performance dashboard with revenue and categories. Plenty of white space and large photography so the product stays the hero.' },
-    client: { pt: 'Curiouz', en: 'Curiouz' },
-    deliver: { pt: ['Layouts de páginas', 'Fluxos de catálogo e produto', 'Painel de desempenho'], en: ['Page layouts', 'Catalog and product flows', 'Performance dashboard'] } },
+  { slug: 'sites-ui-ux', title: 'UI/UX', cat: 'ui', cover: cover('sites-ui-ux'), images: [], chapters: window.SITE_CHAPTERS,
+    bg: '#0D1511', hi: '#7EE36C',
+    lead: { pt: 'Cinco sites, cada um com a sua marca.', en: 'Five websites, each with its own brand.' },
+    text: { pt: 'Conceitos de site para cafés, padarias e restaurantes do Porto. Cada projeto parte da marca: o logótipo, a paleta, a tipografia e o tom de voz viram layout, animação e microinterações. Aqui estão as home pages, as páginas de menu, as agendas de eventos e os movimentos de cada um, em desktop e mobile.', en: 'Website concepts for cafés, bakeries and restaurants in Porto. Each project starts from the brand: logo, palette, type and tone of voice turn into layout, animation and micro-interactions. Here are the home pages, menu pages, event calendars and motion of each one, on desktop and mobile.' },
+    deliver: { pt: ['Home pages', 'Páginas de menu', 'Agendas de eventos', 'Animações e microinterações', 'Versões mobile', 'Sistema de marca (cor e tipografia)'], en: ['Home pages', 'Menu pages', 'Event calendars', 'Animations and micro-interactions', 'Mobile versions', 'Brand system (colour and type)'] } },
   { slug: 'nosso-camarote-cartaz', title: 'Nosso Camarote Poster', cat: 'brand', meta: { pt: 'Cartaz · Bulli Create', en: 'Poster · Bulli Create' }, cover: cover('nosso-camarote-cartaz'), images: gallery('nosso-camarote-cartaz', 1),
     bg: '#120A18', hi: '#FF2DAA',
     lead: { pt: 'Neon, máscara e Sapucaí.', en: 'Neon, masks and the Sapucaí.' },
