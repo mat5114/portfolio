@@ -160,7 +160,7 @@
     return `<header class="ph">
         <div class="ph-glow" aria-hidden="true"></div>
         <div class="ph-in">
-          <div class="ph-top fade" style="--d:0"><span class="ph-idx">${pad2(i + 1)}<small> / ${pad2(PROJECTS.length)}</small></span><span class="ph-chip">${cat}</span>${meta ? `<span class="ph-chip">${meta}</span>` : ''}</div>
+          <div class="ph-top fade" style="--d:0"><span class="ph-chip">${cat}</span>${meta ? `<span class="ph-chip">${meta}</span>` : ''}</div>
           <h2 class="ph-title" id="projTitle" aria-label="${p.title}"><span aria-hidden="true">${titleHTML(p.title)}</span></h2>
           ${lead ? `<p class="ph-lead fade" style="--d:2">${lead}</p>` : ''}
         </div>
