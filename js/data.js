@@ -120,13 +120,7 @@ const PROJECTS = [
     lead: { pt: 'Férias com tudo incluído, em duas palavras.', en: 'All-inclusive holidays, in two words.' },
     text: { pt: 'Peças promocionais para o Club Med em torno dos conceitos Action Inclusive e Fun Inclusive. Letras manuscritas sobre fotografias de mar e de pessoas em movimento, para vender energia e leveza antes de qualquer detalhe.', en: 'Promotional pieces for Club Med built around the Action Inclusive and Fun Inclusive concepts. Hand-lettered type over sea photography and people in motion, selling energy and lightness before any detail.' },
     client: { pt: 'Club Med', en: 'Club Med' },
-    deliver: { pt: ['Peças promocionais', 'Lettering', 'Composição de imagens'], en: ['Promotional pieces', 'Lettering', 'Image composition'] } },
-  { slug: 'social-media', title: 'Social Media Posts', cat: 'social', cover: cover('social-media'), images: gallery('social-media', 1),
-    bg: '#10264F', hi: '#F7941D',
-    lead: { pt: 'Posts que explicam, ensinam e vendem.', en: 'Posts that explain, teach and sell.' },
-    text: { pt: 'Artes para redes sociais de clientes de tradução e de software para restauração: posts de curiosidades, carrosséis e anúncios de produto com assistência 24h. Cores fortes, selos e balões de fala mantêm cada cliente reconhecível.', en: 'Social artwork for translation and restaurant-software clients: trivia posts, carousels and product ads with 24h support. Strong colors, badges and speech bubbles keep each client recognizable.' },
-    client: { pt: 'Just Traduções e outros clientes', en: 'Just Traduções and other clients' },
-    deliver: { pt: ['Posts e carrosséis', 'Anúncios de produto', 'Templates por cliente'], en: ['Posts and carousels', 'Product ads', 'Templates per client'] } }
+    deliver: { pt: ['Peças promocionais', 'Lettering', 'Composição de imagens'], en: ['Promotional pieces', 'Lettering', 'Image composition'] } }
 ];
 
 const SKILLS = [
