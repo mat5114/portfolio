@@ -99,7 +99,7 @@ const PROJECTS = [
     text: { pt: 'Identidade e cartaz do Nosso Camarote para o Carnaval.', en: 'Identity and poster for Nosso Camarote at Carnival.' },
     client: { pt: 'Nosso Camarote, via Bulli Create', en: 'Nosso Camarote, via Bulli Create' },
     deliver: { pt: ['Identidade visual', 'Cartaz', 'Peças de divulgação'], en: ['Visual identity', 'Poster', 'Promotional pieces'] } },
-  { slug: 'formula-da-licitacao', title: 'Fórmula da Licitação', cat: 'brand', meta: { pt: 'Film In', en: 'Film In' }, cover: cover('formula-da-licitacao'), images: gallery('formula-da-licitacao', 1),
+  { slug: 'formula-da-licitacao', custom: 'formula', title: 'Fórmula da Licitação', cat: 'brand', meta: { pt: 'Film In', en: 'Film In' }, cover: cover('formula-da-licitacao'), images: gallery('formula-da-licitacao', 1),
     bg: '#0E1A2B', hi: '#6BE04B',
     lead: { pt: 'Um monograma que vira ícone.', en: 'A monogram that becomes an icon.' },
     text: { pt: 'Logotipo da Fórmula da Licitação, um monograma FL, apresentado em mockup de parede.', en: 'Logo for Fórmula da Licitação, an FL monogram, shown in a wall mockup.' },
