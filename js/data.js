@@ -110,12 +110,6 @@ const PROJECTS = [
     lead: { pt: 'Uma cidade que nunca existiu.', en: 'A city that never existed.' },
     text: { pt: 'Fotomontagens em preto e branco de uma cidade, com nuvens e elementos de fantasia.', en: 'Black and white photo manipulations of a city, with clouds and fantasy elements.' },
     deliver: { pt: ['Fotomontagem', 'Tratamento de cor e luz'], en: ['Photo manipulation', 'Color and light treatment'] } },
-  { slug: 'club-med', title: 'Club Med', cat: 'social', cover: cover('club-med'), images: gallery('club-med', 3),
-    bg: '#0B2A5B', hi: '#FF5A4F',
-    lead: { pt: 'Férias com tudo incluído, em duas palavras.', en: 'All-inclusive holidays, in two words.' },
-    text: { pt: 'Peças promocionais para o Club Med sobre os conceitos Action Inclusive e Fun Inclusive.', en: 'Promotional pieces for Club Med around the Action Inclusive and Fun Inclusive concepts.' },
-    client: { pt: 'Club Med', en: 'Club Med' },
-    deliver: { pt: ['Peças promocionais', 'Lettering', 'Composição de imagens'], en: ['Promotional pieces', 'Lettering', 'Image composition'] } }
 ];
 
 const SKILLS = [
