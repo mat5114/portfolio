@@ -211,7 +211,7 @@
         ${text ? `<p class="pi-text rv">${words(text)}</p>` : '<span></span>'}
         <dl class="pi-facts">${facts}</dl>
       </section>
-      ${p.custom === 'formula' && window.formulaHTML ? window.formulaHTML(lang) : p.chapters ? chaptersHTML(p) : `<div class="proj-gallery" id="projGallery" data-grid="${L.grid}" data-gap="${L.gap}">${galleryInner(p)}</div>`}
+      ${p.custom === 'formula' && window.formulaHTML ? window.formulaHTML(lang) : p.custom === 'footfinder' && window.footfinderHTML ? window.footfinderHTML(lang) : p.chapters ? chaptersHTML(p) : `<div class="proj-gallery" id="projGallery" data-grid="${L.grid}" data-gap="${L.gap}">${galleryInner(p)}</div>`}
       <button class="proj-next" type="button" data-next="${(i + 1) % PROJECTS.length}"><span class="proj-next-label">${t('proj.next')}</span><span class="proj-next-title">${next.title}</span></button>`;
   }
 
@@ -222,6 +222,7 @@
     pBody.innerHTML = projHTML(i);
     wireImages(pBody); watchReveals(pBody); watchVideos(pBody);
     if (pr.custom === 'formula' && window.formulaWire) window.formulaWire(pBody, proj);
+    if (pr.custom === 'footfinder' && window.footfinderWire) window.footfinderWire(pBody, proj);
     proj.style.setProperty('--pp', 0); proj.style.setProperty('--py', 0);
     proj.style.setProperty('--ox', clamp(x == null ? innerWidth / 2 : x, 0, innerWidth) + 'px');
     proj.style.setProperty('--oy', clamp(y == null ? innerHeight / 2 : y, 0, innerHeight) + 'px');
